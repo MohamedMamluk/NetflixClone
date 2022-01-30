@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Head from 'next/head'
 import PopularCard from '../components/cards/PopularCard'
 import SideNav from '../components/SideNav'
 
@@ -18,6 +19,9 @@ const Favorites = () => {
     }, [])
     return (
         <div className="text-white flex pb-16">
+            <Head>
+                <title>Favorites</title>
+            </Head>
             <div className="  hidden  lg:block  lg:w-60  h-[100vh] py-16 pl-10 border-r border-gray-800">
                 <SideNav />
             </div>

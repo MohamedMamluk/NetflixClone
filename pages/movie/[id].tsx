@@ -1,4 +1,5 @@
 import React from 'react'
+import Head from 'next/head'
 import getAction from '../../graphql/query/getAction'
 import getComedy from '../../graphql/query/getComedy'
 import getDocumentary from '../../graphql/query/getDocumentary'
@@ -20,6 +21,9 @@ interface Data {
 const Movie = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
     return (
         <section className=" pb-20">
+            <Head>
+                <title>{data.getMovieDetails.title}</title>
+            </Head>
             <Header data={data} />
             {/* Page main info start */}
             <MovieInfo>

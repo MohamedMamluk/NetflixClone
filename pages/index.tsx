@@ -7,7 +7,7 @@ import getComedy from '../graphql/query/getComedy'
 import getHorror from '../graphql/query/getHorror'
 import getRomance from '../graphql/query/getRomance'
 import getDocumentary from '../graphql/query/getDocumentary'
-
+import Head from 'next/head'
 const Home: NextPage = ({
     action,
     comedy,
@@ -17,6 +17,9 @@ const Home: NextPage = ({
 }: any) => {
     return (
         <div className="text-white flex ">
+            <Head>
+                <title>Home</title>
+            </Head>
             <div className="  hidden  lg:block  lg:w-60  h-[100vh] py-16 pl-10 ">
                 <SideNav />
             </div>
