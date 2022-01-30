@@ -17,7 +17,7 @@ const MainContent: React.FC<AllData> = ({
     documentary,
 }) => {
     return (
-        <div className="flex-1 border-l-2 border-r border-gray-800 pt-10  flex flex-col overflow-auto h-screen">
+        <div className="flex-1 border-l-2 border-r border-gray-800 pt-10  flex flex-col overflow-auto h-screen pb-20">
             <div className="  items-center justify-center">
                 <Main movie={action} />
             </div>
