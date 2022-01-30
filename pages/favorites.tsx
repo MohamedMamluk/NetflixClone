@@ -26,13 +26,19 @@ const Favorites = () => {
                 <SideNav />
             </div>
             <div className="flex flex-col lg:flex-row flex-wrap items-center lg:items-start justify-start  w-full p-8  ">
-                {items.map((item, index) => (
-                    <Link href={`/movie/${item}`} passHref key={index}>
-                        <a href="">
-                            <PopularCard id={item} />
-                        </a>
-                    </Link>
-                ))}
+                {items.length > 0 ? (
+                    items.map((item, index) => (
+                        <Link href={`/movie/${item}`} passHref key={index}>
+                            <a href="">
+                                <PopularCard id={item} />
+                            </a>
+                        </Link>
+                    ))
+                ) : (
+                    <h1 className="headers text-xl">
+                        Start by adding movies to your favorites
+                    </h1>
+                )}
             </div>
         </div>
     )
