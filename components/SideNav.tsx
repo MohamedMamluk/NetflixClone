@@ -9,7 +9,7 @@ function SideNav() {
         <div className="flex flex-col h-full gap-10 transform  transition-all origin-left group ">
             {/* <Logo align="center" /> */}
             <div className="">
-                <img className="w-2/3" src="/logo.png" alt="" />
+                <img className="w-2/3" src="/Logo.png" alt="" />
             </div>
             <div className="flex flex-col gap-10">
                 <h2 className="text-gray-100 text-lg font-bold headers ">

@@ -22,7 +22,7 @@ const PhoneNav = () => {
 
             {/* <Logo align="center" direction="col" /> */}
             <div className="w-28 aspect-auto">
-                <img className="aspect-auto" src="/logo.png" alt="" />
+                <img className="aspect-auto" src="/Logo.png" alt="" />
             </div>
             {/* <div className="flex flex-col items-center">
                 <MdFavoriteBorder size={25} />
