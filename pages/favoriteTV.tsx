@@ -24,7 +24,7 @@ const FavoriteTV = () => {
     return (
         <div className="text-white flex pb-16">
             <Head>
-                <title>Favorites</title>
+                <title>Favorite TV Shows</title>
             </Head>
             <div className="  hidden  lg:block  lg:w-60  h-[100vh] py-16 pl-10 border-r border-gray-800">
                 <SideNav />

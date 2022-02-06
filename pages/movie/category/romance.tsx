@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { gql, useQuery } from '@apollo/client'
 import MovieCategory from '../../../components/pagesComponents/MovieCategories'
+import Head from 'next/head'
 interface TVShowData {
     getRomance: {
         id: string
@@ -39,6 +40,9 @@ const Romance = () => {
         )
     return (
         <div>
+            <Head>
+                <title>Romance Movies</title>
+            </Head>
             {data && (
                 <MovieCategory
                     data={data.getRomance}

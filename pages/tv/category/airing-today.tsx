@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { gql, useQuery } from '@apollo/client'
 import TVCategory from '../../../components/pagesComponents/TVCategories'
+import Head from 'next/head'
 interface TVShowData {
     getAiringToday: {
         id: string
@@ -39,6 +40,9 @@ const AiringToday = () => {
         )
     return (
         <div>
+            <Head>
+                <title>Airing Today</title>
+            </Head>
             {data && (
                 <TVCategory
                     data={data.getAiringToday}
