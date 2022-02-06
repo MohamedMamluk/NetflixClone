@@ -87,6 +87,26 @@ export interface MovieDetails {
     overview: string
     title: string
 }
+export interface TVShow {
+    backdrop_path: {
+        w500: string
+        original: string
+    }
+    first_air_date: string
+    genre_ids: Genre[]
+    id: number
+    name: string
+    original_language: string
+    original_name: string
+    overview: string
+    popularity: number
+    poster_path: {
+        w500: string
+        original: string
+    }
+    vote_average: number
+    vote_count: number
+}
 
 export interface Id extends ParsedUrlQuery {
     id: string

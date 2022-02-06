@@ -1,28 +1,31 @@
-import React, { useRef } from 'react'
-import { Show, TVShow } from '../../types'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import Link from 'next/link'
 import 'swiper/css'
 import 'swiper/css/effect-fade'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import 'swiper/css/lazy'
-import SwiperCore, { Lazy, Pagination, Navigation } from 'swiper'
-import Image from 'next/image'
-import { AiOutlineArrowRight, AiOutlineArrowLeft } from 'react-icons/ai'
-interface CategoryTypes {
-    movies: Show[]
-    categoryName: string
-}
-SwiperCore.use([Lazy, Pagination, Navigation])
+import SwiperCore, { Pagination, Navigation } from 'swiper'
+import React, { useRef } from 'react'
+import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai'
+import { ActorDetails } from '../../types'
+import Actor from './Actor'
 
-const Category: React.FC<CategoryTypes> = ({ movies, categoryName }) => {
+SwiperCore.use([Pagination, Navigation])
+interface SwiperProps {
+    actors: ActorDetails[]
+    title: string
+}
+
+const SwiperContainer: React.FC<SwiperProps> = ({ actors, title }) => {
     const Prev = useRef(null)
     const Next = useRef(null)
+
     return (
-        <section className="mx-auto w-full md:w-4/5 mb-20 px-4">
+        <section>
             <div className="flex items-start justify-between mb-3">
-                <h2 className="font-bold text-lg headers">{categoryName}</h2>
+                <h2 className="headers text-xl my-3 font-bold uppercase">
+                    {title}
+                </h2>
                 <div className="flex gap-5">
                     <button
                         className="w-14 h-14 rounded-full border-2 border-white hover:border-red-600 hover:text-red-700
@@ -61,29 +64,15 @@ const Category: React.FC<CategoryTypes> = ({ movies, categoryName }) => {
                         slidesPerView: 5,
                     },
                 }}
-                slidesPerView={3}
+                slidesPerView={2}
                 spaceBetween={20}
             >
-                {movies.map((movie, index) => (
+                {actors.slice(0, 10).map((actor, index) => (
                     <SwiperSlide
                         key={index}
-                        className=" flex flex-col items-center text-center group cursor-pointer "
+                        className=" flex flex-col items-center text-center group cursor-grab max-h-52"
                     >
-                        <Link href={`/movie/${movie.id}`} passHref>
-                            <a>
-                                <div className="bg-gray-900 opacity-40 select-none group-hover:opacity-75 ">
-                                    <Image
-                                        src={movie.poster_path.w500}
-                                        alt="Article image"
-                                        height="200"
-                                        width="150"
-                                    />
-                                </div>
-                                <div className="group-hover:text-red-500">
-                                    <h2>{movie.title}</h2>
-                                </div>
-                            </a>
-                        </Link>
+                        <Actor actor={actor} />
                     </SwiperSlide>
                 ))}
             </Swiper>
@@ -91,4 +80,4 @@ const Category: React.FC<CategoryTypes> = ({ movies, categoryName }) => {
     )
 }
 
-export default Category
+export default SwiperContainer

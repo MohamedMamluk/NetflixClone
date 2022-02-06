@@ -5,6 +5,9 @@
 body {
     font-family: Roboto !important;
 }
+html {
+    scroll-behavior: smooth;
+}
 /* width */
 ::-webkit-scrollbar {
     width: 2px;

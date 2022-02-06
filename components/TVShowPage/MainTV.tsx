@@ -6,13 +6,13 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import SwiperCore, { Autoplay, Navigation, Pagination } from 'swiper'
 import Info from './Main.info'
-import { Show } from '../../types/index'
+import { TVShow } from '../../types/index'
 interface MainInfo {
-    movie: Show[]
+    TV: TVShow[]
 }
 SwiperCore.use([Autoplay, Navigation, Pagination])
 
-const Main: React.FC<MainInfo> = ({ movie }) => {
+const MainTV: React.FC<MainInfo> = ({ TV }) => {
     const [favoriteArray, setFavoriteArray] = useState<string[]>([])
     const [updatedFavoriteArray, setUpdatedFavoriteArray] = useState<string[]>(
         []
@@ -27,7 +27,7 @@ const Main: React.FC<MainInfo> = ({ movie }) => {
         setUpdatedFavoriteArray(newFav)
     }
     useEffect(() => {
-        const favorites = localStorage.getItem('Favorites')
+        const favorites = localStorage.getItem('FavoritesTV')
         let items: string[] = []
         if (!favorites) {
             setFavoriteArray(items)
@@ -37,13 +37,13 @@ const Main: React.FC<MainInfo> = ({ movie }) => {
         }
     }, [])
     useEffect(() => {
-        localStorage.setItem('Favorites', JSON.stringify(favoriteArray))
-        const items = localStorage.getItem('Favorites')
+        localStorage.setItem('FavoritesTV', JSON.stringify(favoriteArray))
+        const items = localStorage.getItem('FavoritesTV')
     }, [favoriteArray])
 
     return (
         <div className=" mx-auto w-full md:w-2/3 md:h-5/6 mb-4 px-4 lg:px-0">
-            <h2 className="mb-3 text-lg font-bold headers">Latest Releases</h2>
+            <h2 className="mb-3 text-lg font-bold headers">Top Rated</h2>
 
             <Swiper
                 className="h-full"
@@ -68,7 +68,7 @@ const Main: React.FC<MainInfo> = ({ movie }) => {
                     disableOnInteraction: false,
                 }}
             >
-                {movie.map((mov, index) => (
+                {TV.map((mov, index) => (
                     <SwiperSlide
                         key={index}
                         style={{
@@ -81,7 +81,7 @@ const Main: React.FC<MainInfo> = ({ movie }) => {
                     >
                         <div className="  bg-gray-900 opacity-40 absolute inset-0 select-none"></div>
                         <Info
-                            title={mov.title}
+                            title={mov.name}
                             id={String(mov.id)}
                             fav={
                                 favoriteArray.find(
@@ -99,4 +99,4 @@ const Main: React.FC<MainInfo> = ({ movie }) => {
         </div>
     )
 }
-export default Main
+export default MainTV

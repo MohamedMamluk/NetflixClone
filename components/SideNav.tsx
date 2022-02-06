@@ -1,16 +1,11 @@
-import { AiOutlineHome } from 'react-icons/ai'
+import { AiOutlineHome, AiOutlineUser } from 'react-icons/ai'
 import { MdFavoriteBorder } from 'react-icons/md'
-import Logo from './Logo'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 function SideNav() {
     const router = useRouter()
     return (
         <div className="flex flex-col h-full gap-10 transform  transition-all origin-left group ">
-            {/* <Logo align="center" /> */}
-            <div className="">
-                <img className="w-2/3" src="/Logo.png" alt="" />
-            </div>
             <div className="flex flex-col gap-10">
                 <h2 className="text-gray-100 text-lg font-bold headers ">
                     Menu
@@ -30,14 +25,27 @@ function SideNav() {
                     </li>
                     <li
                         className={`flex items-center gap-2 ${
-                            router.route === '/favorites' &&
+                            router.route === '/favoriteMovies' &&
                             'text-red-500 border-r-4 border-red-500 font-bold'
                         } `}
                     >
-                        <Link href="/favorites" passHref>
+                        <Link href="/favoriteMovies" passHref>
                             <a className="flex items-center gap-2 ">
                                 <MdFavoriteBorder />
-                                <span> Favorites</span>
+                                <span> Favorite Movies</span>
+                            </a>
+                        </Link>
+                    </li>
+                    <li
+                        className={`flex items-center gap-2 ${
+                            router.route === '/favoriteTV' &&
+                            'text-red-500 border-r-4 border-red-500 font-bold'
+                        } `}
+                    >
+                        <Link href="/favoriteTV" passHref>
+                            <a className="flex items-center gap-2 ">
+                                <MdFavoriteBorder />
+                                <span> Favorite TV Shows</span>
                             </a>
                         </Link>
                     </li>

@@ -21,22 +21,33 @@ const PhoneNav = () => {
             </div>
 
             {/* <Logo align="center" direction="col" /> */}
-            <div className="w-28 aspect-auto">
-                <img className="aspect-auto" src="/Logo.png" alt="" />
-            </div>
+
             {/* <div className="flex flex-col items-center">
                 <MdFavoriteBorder size={25} />
                 <h2>Favorite</h2>
             </div> */}
             <div
                 className={`${
-                    router.route === '/favorites' && 'text-red-500  font-bold'
+                    router.route === '/favoriteMovies' &&
+                    'text-red-500  font-bold'
                 } `}
             >
-                <Link href="/favorites" passHref>
+                <Link href="/favoriteMovies" passHref>
                     <a className="flex flex-col items-center w-full">
                         <MdFavoriteBorder size={25} />
-                        <span> Favorites</span>
+                        <span> Favorite Movies</span>
+                    </a>
+                </Link>
+            </div>
+            <div
+                className={`${
+                    router.route === '/favoriteTV' && 'text-red-500  font-bold'
+                } `}
+            >
+                <Link href="/favoriteTV" passHref>
+                    <a className="flex flex-col items-center w-full">
+                        <MdFavoriteBorder size={25} />
+                        <span> Favorite Shows</span>
                     </a>
                 </Link>
             </div>

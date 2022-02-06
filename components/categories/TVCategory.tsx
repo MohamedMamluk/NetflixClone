@@ -11,12 +11,12 @@ import SwiperCore, { Lazy, Pagination, Navigation } from 'swiper'
 import Image from 'next/image'
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from 'react-icons/ai'
 interface CategoryTypes {
-    movies: Show[]
+    shows: TVShow[]
     categoryName: string
 }
 SwiperCore.use([Lazy, Pagination, Navigation])
 
-const Category: React.FC<CategoryTypes> = ({ movies, categoryName }) => {
+const TVCategory: React.FC<CategoryTypes> = ({ shows, categoryName }) => {
     const Prev = useRef(null)
     const Next = useRef(null)
     return (
@@ -64,23 +64,23 @@ const Category: React.FC<CategoryTypes> = ({ movies, categoryName }) => {
                 slidesPerView={3}
                 spaceBetween={20}
             >
-                {movies.map((movie, index) => (
+                {shows.map((show, index) => (
                     <SwiperSlide
                         key={index}
-                        className=" flex flex-col items-center text-center group cursor-pointer "
+                        className=" flex flex-col items-center text-center group cursor-pointer"
                     >
-                        <Link href={`/movie/${movie.id}`} passHref>
+                        <Link href={`/tv/${show.id}`} passHref>
                             <a>
                                 <div className="bg-gray-900 opacity-40 select-none group-hover:opacity-75 ">
                                     <Image
-                                        src={movie.poster_path.w500}
+                                        src={show.poster_path.w500}
                                         alt="Article image"
                                         height="200"
                                         width="150"
                                     />
                                 </div>
                                 <div className="group-hover:text-red-500">
-                                    <h2>{movie.title}</h2>
+                                    <h2>{show.name}</h2>
                                 </div>
                             </a>
                         </Link>
@@ -91,4 +91,4 @@ const Category: React.FC<CategoryTypes> = ({ movies, categoryName }) => {
     )
 }
 
-export default Category
+export default TVCategory

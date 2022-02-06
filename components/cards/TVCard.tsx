@@ -3,13 +3,13 @@ import { gql, useQuery } from '@apollo/client'
 
 import { Show } from '../../types'
 interface Card {
-    id: string
+    id: number
 }
 
-const GET_MOVIE_DETAILS = gql`
-    query GetDetails($id: ID!) {
-        getMovieDetails(id: $id) {
-            title
+const GET_TV_SHOW_DETAILS = gql`
+    query GetDetails($id: Int) {
+        getTVShowDetails(id: $id) {
+            name
             vote_average
             backdrop_path {
                 w500
@@ -18,16 +18,16 @@ const GET_MOVIE_DETAILS = gql`
     }
 `
 interface Data {
-    getMovieDetails: {
-        title: string
+    getTVShowDetails: {
+        name: string
         vote_average: number
         backdrop_path: {
             w500: string
         }
     }
 }
-const PopularCard: React.FC<Card> = ({ id }) => {
-    const { data, loading } = useQuery<Data>(GET_MOVIE_DETAILS, {
+const TVCard: React.FC<Card> = ({ id }) => {
+    const { data, loading } = useQuery<Data>(GET_TV_SHOW_DETAILS, {
         variables: {
             id,
         },
@@ -46,22 +46,22 @@ const PopularCard: React.FC<Card> = ({ id }) => {
             </div>
         )
     return (
-        <div className=" relative flex flex-col items-center text-sm w-full  hover:scale-105 transition-all duration-200 ease-out group  gap-2 ">
+        <div className=" relative flex flex-col items-center text-sm  hover:scale-105 transition-all duration-200 ease-out group  gap-2 ">
             <div>
                 <img
                     className="w-full"
-                    src={data?.getMovieDetails.backdrop_path.w500}
+                    src={data?.getTVShowDetails.backdrop_path.w500}
                     alt=""
                 />
             </div>
             <div className=" flex flex-col justify-between group-hover:text-yellow-300">
                 <h3 className=" text-gray-200 group-hover:text-red-500">
-                    {data?.getMovieDetails.title}
+                    {data?.getTVShowDetails.name}
                 </h3>
                 <div className="flex gap-2 mb-2 items-center justify-between ">
                     <img src="/imdb.png" className="w-10" alt="" />
                     <span className="block">
-                        {data?.getMovieDetails.vote_average}
+                        {data?.getTVShowDetails.vote_average}
                     </span>
                 </div>
             </div>
@@ -69,4 +69,4 @@ const PopularCard: React.FC<Card> = ({ id }) => {
     )
 }
 
-export default PopularCard
+export default TVCard
