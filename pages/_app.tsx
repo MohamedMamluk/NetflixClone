@@ -23,7 +23,7 @@ export const client = new ApolloClient({
             },
         },
     }),
-    uri: 'https://intense-river-89483.herokuapp.com',
+    uri: 'https://nfc-0v7l.onrender.com/',
 })
 //@ts-ignore
 export const Type = createContext<ContextType>()
